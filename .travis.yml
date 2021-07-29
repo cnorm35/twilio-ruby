@@ -11,15 +11,14 @@ rvm:
 - 3.0
 services:
 - docker
-jobs:
+install: make install
+script: make test
+matrix:
   include:
     - language: ruby
       rvm: '3.0'
       after_success:
-       - sonar-scanner
-install: make install
-script: make test
-matrix:
+        - sonar-scanner
   allow_failures:
   - rvm: ruby-head
   fast_finish: true
