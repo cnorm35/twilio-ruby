@@ -11,14 +11,12 @@ rvm:
 - 3.0
 services:
 - docker
-install: make install
 jobs:
   include:
-    - stage: "sonar"
-      name: "Sonar Scanner"
-      language: ruby
-      rvm: 3.0
+    - language: ruby
+      rvm: '3.0'
       after_success: sonar-scanner
+install: make install
 script: make test
 matrix:
   allow_failures:
