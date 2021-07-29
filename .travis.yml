@@ -18,6 +18,7 @@ matrix:
     - language: ruby
       rvm: '3.0'
       after_success:
+        - ls -l
         - sonar-scanner
   allow_failures:
   - rvm: ruby-head
