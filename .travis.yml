@@ -8,14 +8,15 @@ rvm:
 - 2.5
 - 2.6
 - 2.7
-- '3.0'
+- 3.0
 services:
 - docker
 jobs:
   include:
     - language: ruby
       rvm: '3.0'
-      after_success: sonar-scanner
+      after_success:
+       - sonar-scanner
 install: make install
 script: make test
 matrix:
