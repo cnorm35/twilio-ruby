@@ -21,6 +21,7 @@ matrix:
         - ls -l
         - ls -l ./coverage
         - ls -l ./coverage/.resultset.json
+        - ruby -rjson -e 'sqube = JSON.load(File.read("coverage/.resultset.json"))["RSpec"]["coverage"].transform_values {|lines| lines["lines"]}; total = { "RSpec" => { "coverage" => sqube, "timestamp" => Time.now.to_i }}; puts JSON.dump(total)' > coverage/.resultset.sonarqube.json
         - sonar-scanner
   allow_failures:
   - rvm: ruby-head
