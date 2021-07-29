@@ -18,7 +18,9 @@ matrix:
     - language: ruby
       rvm: '3.0'
       after_success:
-        - ls -l coverage
+        - ls -l
+        - ls -l ./coverage
+        - ls -l ./coverage/.resultset.json
         - sonar-scanner
   allow_failures:
   - rvm: ruby-head
